@@ -8,6 +8,7 @@ import java.io.FilenameFilter;
 
 public class GenSh {
   //private static final String JAVA = "/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/bin/java";
+  private static final String BUILD_DIR = "build/classes";
   private static final String JAVA = "java";
   private static final File THIS_DIR = new File(".").getAbsoluteFile();
   
@@ -64,11 +65,11 @@ public class GenSh {
       writer.write("cat src/" + exampleDir.getName() + "/" + javaFile.getName() + "\n");
       writer.write("echo\n");
       writer.write("echo \"--------------------------------------------------------------------------------------------------\"\n");
-      writer.write("echo \"java " + vmArgs + " -cp bin " + className + "\"\n");
+      writer.write("echo \"java " + vmArgs + " -cp " + BUILD_DIR + " " + className + "\"\n");
       writer.write("echo \"--------------------------------------------------------------------------------------------------\"\n");
       //writer.write("if [ \"$1\" -ne \"-\" ]\n");
       //writer.write("then\n");
-      writer.write(JAVA + " " + vmArgs + " -cp bin " + className + " 2>&1 " + postprocessors + " \n");
+      writer.write(JAVA + " " + vmArgs + " -cp " + BUILD_DIR + " " + className + " 2>&1 " + postprocessors + " \n");
       //writer.write("fi\n");
     }
   }
